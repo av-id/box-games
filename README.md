@@ -73,8 +73,8 @@ minroob::setmin($minroobTable, $x, $y);          // set a mine home
 minroob::earthcount($minroobTable);              // return [Player1 homes selected, Player2 homes selected]
 minroob::mincount($minroobTable);                // return [Player1 mines selected, Player2 mines selected]
 minroob::emptys($minroobTable);                  // empty homes
-xo::mapview($minroobTable, [ Unviewable Homeid => Icon, ... ] );    // Table to String (viewable all)
-xo::map($minroobTable, [ Unviewable Homeid => Icon, ... ] );        // Table to String
+minroob::mapview($minroobTable, [ Unviewable Homeid => Icon, ... ] );    // Table to String (viewable all)
+minroob::map($minroobTable, [ Unviewable Homeid => Icon, ... ] );        // Table to String
 ```
 
 ## Ethelo
