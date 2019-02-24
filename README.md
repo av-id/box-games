@@ -15,7 +15,7 @@ $xoTable = xo::make();
 On $xoTable you have a Empty game.
 
 _home id list:_
-- xo::EMPTY      a Empty home id
+- xo::EEMPTY      a Empty home id
 - xo::PLAYER1    Player number 1 home id
 - xo::PLAYER2    Player number 2 home id
 
@@ -57,7 +57,7 @@ $minroobTable = minroob::make( Width = 8, Height = 8, Mine count = 15);
 ```
 
 _home id:_
-- minroob::EMPTY       a Empty home id
+- minroob::EEMPTY       a Empty home id
 - minroob::PLAYER1     Player1 home id
 - minroob::PLAYER2     Player2 home id
 - minroob::MIN         a Hidden Mine
@@ -106,7 +106,7 @@ $etheloTable = ethelo::make( Width = 8, Height = 8);
 ```
 
 _home id list:_
-- ethelo::EMPTY       a Empty home id
+- ethelo::EEMPTY       a Empty home id
 - ethelo::PLAYER1     Player1 home id
 - ethelo::PLAYER2     Player2 home id
 - ethelo::HELPER      Helper home id
