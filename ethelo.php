@@ -208,6 +208,19 @@ class ethelo {
                     ++$count;
         return $count;
     }
+    public static function check($table){
+        $icons = array(0, 0, 0, 0);
+        for($x = 0; isset($table[$x]); ++$x)
+            for($y = 0; isset($table[$x][$y]); ++$y)
+                ++$icons[$table[$x][$y]];
+        if($icons[0] == 0)
+            if($icons[1] > $icons[2])
+                return 1;
+            elseif($icons[2] > $icons[1])
+                return 2;
+            else return 3;
+        return 0;
+    }
     public static function helpers($table){
         $helpers = array();
         for($x = 0; isset($table[$x]); ++$x)

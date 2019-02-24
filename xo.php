@@ -8,7 +8,6 @@ class xo {
     const VERY_HARD = 4;
     const WINNER = 5;
     const NOTWINER = 6;
-
     const EMPTY = 0;
     const PLAYER1 = 1;
     const PLAYER2 = 2;
@@ -79,11 +78,16 @@ class xo {
     public static function get($table, $x, $y){
         return $table[$x * 3 + $y];
     }
+    public static function play(&$table, $x, $y, $player){
+        $that = $player == 1 ? 2 : 1;
+        if($table[$x * 3 + $y] == $player)return 2;
+        if($table[$x * 3 + $y] == $that)return 3;
+        $table[$x * 3 + $y] = 0;
+    }
     public static function check($table){
-        foreach($this->win as $win)
-            for($i = 0; $i < 9; ++$i)
-                if($table[$win[$i][0]] == $table[$win[$i][1]] && $table[$win[$i][0]] == $table[$win[$i][2]])
-                    return $table[$win[$i][0]];
+        foreach(self::$win as $win)
+            if($table[$win[0]] == $table[$win[1]] && $table[$win[0]] == $table[$win[2]])
+                return $table[$win[0]];
         foreach($table as $win)
             if($win == 0)
                 return 0;

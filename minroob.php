@@ -173,6 +173,34 @@ class minroob {
                     ++$players[$table[$x][$y] - 3];
         return $players;
     }
+    public static function play($table, $x, $y, $player){
+        $that = $player == 1 ? 2 : 1;
+        if($table[$x][$y] > 16)return 0;
+        if($table[$x][$y] == $player || $table[$x][$y] == $player + 3)return 1;
+        if($table[$x][$y] == $that || $table[$x][$y] == $that + 3)return 2;
+        if($table[$x][$y] >= 6 && $table[$x][$y] <= 15){
+            $table[$x][$y] += 16;
+            return 3;
+        }if($table[$x][$y] == 3){
+            $table[$x][$y] += $player;
+            return 4;
+        }$table[$x][$y] = $player;
+        return 5;
+    }
+    public static function check($table){
+        $icons = array(0, 0, 0, 0, 0, 0);
+        for($x = 0; isset($table[$x]); ++$x)
+            for($y = 0; isset($table[$x][$y]); ++$y)
+                if($table[$x][$y] % 16 < 6)
+                    ++$icons[$table[$x][$y] % 16];
+        if($icons[0] == 0 || $icons[1] == 0)
+            if($icons[4] > $icons[5])
+                return 1;
+            elseif($icons[5] > $icons[4])
+                return 2;
+            else return 3;
+        return 0;
+    }
     public static function emptys($table){
         $emptys = array();
         for($x = 0; isset($table[$x]); ++$x)
