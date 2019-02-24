@@ -34,10 +34,16 @@ _Win code:_
 - 2:     Player2 winned
 - 3:     Equalised
 
+_Play code:_
+- 0:     OK! Selectoed
+- 1:     Last selected from You
+- 2:     Last selected from Opponent
+
 methods list:
 ```php
-xo::set($xoTable, $x, $y, $home_id);         // for user playing
+xo::set($xoTable, $x, $y, $home_id);         // set a home
 xo::get($xoTable, $x, $y);                   // get a home
+xo::play($xoTable, $x, $y, $player);         // select a home by Player (play)
 xo::bot($xoTable, $player, $level = NORMAL); // run the game by robot as a player
 xo::check($xoTable);                         // return Win code
 xo::emptys($xoTable);                        // empty homes
@@ -47,7 +53,7 @@ xo::map($xoTable, $emptyIcon, $Player1, $Player2);    // Table to string
 ## Minroob
 You can create new Minroob table by method make:
 ```php
-$minroobTable = xo::make( Width = 8, Height = 8, Mine count = 15);
+$minroobTable = minroob::make( Width = 8, Height = 8, Mine count = 15);
 ```
 
 _home id:_
@@ -60,10 +66,26 @@ _home id:_
 - 6 to 15              Number of around mines (number = homeid - 6)
 - 16 to 31             Viewable home id (viewable = homeid + 16)
 
+_Win code:_
+- 0:     Unknown
+- 1:     Player1 winned
+- 2:     Player2 winned
+- 3:     Equalised
+
+_Play code:_
+- 0:     Last viewabled home
+- 1:     Last selected from You
+- 2:     Last selected from Opponent
+- 3:     OK! Selected number home
+- 4:     OK! Selected mine home
+- 5:     OK! Selected empty home
+
 methods list:
 ```php
-minroob::set($minroobTable, $x, $y, $homeid);    // for user playing
+minroob::set($minroobTable, $x, $y, $homeid);    // set a home
 minroob::get($minroobTable, $x, $y);             // get a home
+minroob::play($minroobTable, $x, $y, $player);   // select a home by Player (play)
+minroob::check($minroobTable);                   // return Win code
 minroob::view($minroobTable, $x, $y);            // viewabling a home
 minroob::unview($minroobTable, $x, $y);          // unviewabling a home
 minroob::viewall($minroobTable);                 // viewabling all homes
@@ -89,12 +111,19 @@ _home id list:_
 - ethelo::PLAYER2     Player2 home id
 - ethelo::HELPER      Helper home id
 
+_Win code:_
+- 0:     Unknown
+- 1:     Player1 winned
+- 2:     Player2 winned
+- 3:     Equalised
+
 methods list:
 ```php
 ethelo::helper($etheloTable, $forPlayer);       // load Helpers
 ethelo::set($ehteloTable, $x, $y, $homeid);     // set a home
 ethelo::get($etheloTable, $x, $y);              // get a home
-ethelo::play($etheloTable, $x, $y, $player);    // select a home by Player (play)
+ethelo::play($etheloTable, $x, $y, $player);    // select a home by Player (play) return boolean
+ethelo::check($minroobTable);                   // return Win code
 ethelo::sizex($etheloTable);                    // table Width
 ethelo::sizey($etheloTable);                    // table Height
 ethelo::playercount($etheloTable, $player);     // Player home selecteds count
