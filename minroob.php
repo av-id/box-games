@@ -173,7 +173,7 @@ class minroob {
                     ++$players[$table[$x][$y] - 3];
         return $players;
     }
-    public static function play($table, $x, $y, $player){
+    public static function play(&$table, $x, $y, $player){
         $that = $player == 1 ? 2 : 1;
         if($table[$x][$y] > 16)return 0;
         if($table[$x][$y] == $player || $table[$x][$y] == $player + 3)return 1;
@@ -185,6 +185,14 @@ class minroob {
             $table[$x][$y] += $player;
             return 4;
         }$table[$x][$y] = $player;
+        if(isset($table[$x - 1][$y]))self::play($table, $x - 1, $y, $player);
+        if(isset($table[$x + 1][$y]))self::play($table, $x + 1, $y, $player);
+        if(isset($table[$x][$y - 1]))self::play($table, $x, $y - 1, $player);
+        if(isset($table[$x][$y + 1]))self::play($table, $x, $y + 1, $player);
+        if(isset($table[$x - 1][$y - 1]))self::play($table, $x - 1, $y - 1, $player);
+        if(isset($table[$x - 1][$y + 1]))self::play($table, $x - 1, $y + 1, $player);
+        if(isset($table[$x + 1][$y - 1]))self::play($table, $x + 1, $y - 1, $player);
+        if(isset($table[$x + 1][$y + 1]))self::play($table, $x + 1, $y + 1, $player);
         return 5;
     }
     public static function check($table){

@@ -80,9 +80,10 @@ class xo {
     }
     public static function play(&$table, $x, $y, $player){
         $that = $player == 1 ? 2 : 1;
-        if($table[$x * 3 + $y] == $player)return 2;
-        if($table[$x * 3 + $y] == $that)return 3;
+        if($table[$x * 3 + $y] == $player)return 1;
+        if($table[$x * 3 + $y] == $that)return 2;
         $table[$x * 3 + $y] = 0;
+        return 0;
     }
     public static function check($table){
         foreach(self::$win as $win)
