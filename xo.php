@@ -8,7 +8,7 @@ class xo {
     const VERY_HARD = 4;
     const WINNER = 5;
     const NOTWINER = 6;
-    const EMPTY = 0;
+    const EEMPTY = 0;
     const PLAYER1 = 1;
     const PLAYER2 = 2;
     const EQUAL = 3;
@@ -111,16 +111,16 @@ class xo {
         foreach(self::$bot[0] as $n => $ch)
             if($table[$n] == $that)
                 for($i = 0; isset($ch[$i]); $i += 2)
-                    if($table[$ch[$i]] == $that)
+                    if($table[$ch[$i]] == $that && $table[$ch[$i + 1]] == 0)
                         $select[0][] = $ch[$i + 1];
-                    elseif($table[$ch[$i + 1]] == $that)
+                    elseif($table[$ch[$i + 1]] == $that && $table[$ch[$i]] == 0)
                         $select[0][] = $ch[$i];
         foreach(self::$bot[0] as $n => $ch)
             if($table[$n] == $player)
                 for($i = 0; isset($ch[$i]); $i += 2)
-                    if($table[$ch[$i]] == $player)
+                    if($table[$ch[$i]] == $player && $table[$ch[$i + 1]] == 0)
                         $select[1][] = $ch[$i + 1];
-                    elseif($table[$ch[$i + 1]] == $player)
+                    elseif($table[$ch[$i + 1]] == $player && $table[$ch[$i]] == 0)
                         $select[1][] = $ch[$i];
         if($select[0] === array() && $select[1] === array() && $level[2] == 0)
             $level[2] = true;
