@@ -1,7 +1,7 @@
 <?php
 
 class minroob {
-    const EMPTY = 0;
+    const EEMPTY = 0;
     const PLAYER1 = 1;
     const PLAYER2 = 2;
     const MIN = 3;
